@@ -22,6 +22,7 @@ const Product = ({ route, navigation }) => {
         })
             .then(res => {
                 if (res.ok) {
+                    route.params.onGoBack()
                     navigation.goBack()
                 }
             })
@@ -53,7 +54,8 @@ const Product = ({ route, navigation }) => {
                 <TextInput 
                     style={style.textInput}
                     onChangeText={value => onChangeText(value, "remaining")}
-                    value={product.remaining.toString()} keyboardType='numeric'
+                    value={product.remaining.toString()} 
+                    keyboardType='numeric'
                 />
             </View>
 
@@ -62,7 +64,9 @@ const Product = ({ route, navigation }) => {
                 <Switch
                     trackColor={{ false: "#767577", true: "#81b0ff" }}
                     thumbColor={product.soldOut ? "#f5dd4b" : "#f4f3f4"}
-                    ios_backgroundColor="#3e3e3e" onValueChange={toggleSwitch} value={product.soldOut}
+                    ios_backgroundColor="#3e3e3e" 
+                    onValueChange={toggleSwitch} 
+                    value={product.soldOut}
                 />
             </View>
 
@@ -99,6 +103,7 @@ const Product = ({ route, navigation }) => {
                     style={style.textInput}
                     onChangeText={value => onChangeText(value, "price")}
                     value={product.price.toString()}
+                    keyboardType='numeric'
                 />
             </View>
 

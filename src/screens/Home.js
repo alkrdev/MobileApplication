@@ -8,14 +8,21 @@ import React, { useEffect, useState } from 'react';
 const Home = ({ navigation }) => {
     const [products, setProducts] = useState([])
 
-    const GoToProduct = (product) => {
-        navigation.navigate('Product', { product })
-    }
-    
-    useEffect(() => {
+    const Refresh = () => {
         fetch("https://lionfish-app-dfibs.ondigitalocean.app/items")
             .then(res => res.json())
             .then(json => setProducts(json))
+    }
+
+    const GoToProduct = (product) => {
+        navigation.navigate('Product', { 
+            product,
+            onGoBack: Refresh,
+        })
+    }
+    
+    useEffect(() => {
+        Refresh()
     }, [])
 
     return (
