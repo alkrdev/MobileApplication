@@ -1,6 +1,8 @@
 import {View, Text, Button, StyleSheet, TextInput, Image, TouchableOpacity, Switch, ScrollView} from 'react-native';
 import React, { useState } from "react"
 
+import * as base from "./../resources.js"
+
 const Product = ({ route, navigation }) => {
     const [product, setProduct] = useState(route.params.product)
 
@@ -13,7 +15,7 @@ const Product = ({ route, navigation }) => {
     }
 
     const SaveChanges = () => {        
-        fetch("https://lionfish-app-dfibs.ondigitalocean.app/items/" + product.id, {
+        fetch(base.URL + "/items" + product.id, {
             method: "PUT",
             headers: {
                 "Content-type": "application/json"

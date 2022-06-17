@@ -1,6 +1,7 @@
 import {View,  StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { Text, Appbar, Menu, Button, Divider } from 'react-native-paper';
 
+import * as base from "./../resources.js"
 
 import React, { useEffect, useState } from 'react';
 
@@ -9,7 +10,7 @@ const Home = ({ navigation }) => {
     const [products, setProducts] = useState([])
 
     const Refresh = () => {
-        fetch("https://lionfish-app-dfibs.ondigitalocean.app/items")
+        fetch(base.URL + "/items")
             .then(res => res.json())
             .then(json => setProducts(json))
     }
